@@ -3,8 +3,6 @@
         <input id="txt-search" type="text" name="searcher">
         <button id="btn-search" name="submitter"><i class="fa fa-search"></i></button>
     </form>
-    
-    <div class="spacer"></div>
     <div class="results">
     <?PHP
 
