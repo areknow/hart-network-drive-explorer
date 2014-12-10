@@ -3,7 +3,8 @@
 # GET request URL parts from isnotes.php
 $filename = $_GET['name'];
 $extension = $_GET['ext'];
-$shortfilename = $_GET['shortname'];
+$shortfilename = $_GET['shortname']; 
+$fsize = $_GET['size'];
 
 # build internalizer header for browser link
 if ($extension == "pdf") {
@@ -39,7 +40,11 @@ if ($extension == "png") {
 if ($extension == "bmp") {
     header("Content-type: application/bmp"); 
 }
+if ($extension == "rdp") {
+    header("Content-type: application/x-rdp"); 
+}
 
+header("Content-Length: ".$fsize);
 header("Content-Disposition: inline; filename='$shortfilename'"); 
 
 $file = readfile($filename);
