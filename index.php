@@ -3,6 +3,8 @@
         <input id="txt-search" type="text" name="searcher">
         <button id="btn-search" name="submitter"><i class="fa fa-search"></i></button>
     </form>
+    
+    <div class="spacer"></div>
     <div class="results">
     <?PHP
 
@@ -58,7 +60,8 @@
             # extract filename and extension
             $extension = pathinfo($path, PATHINFO_EXTENSION); 
             $filename = pathinfo($path, PATHINFO_FILENAME); 
-            $displayename = "$filename.$extension";
+            $filesize = filesize($path);
+            $displayname = "$filename.$extension";
 
             # remove unwanted file types and directory markers
             if ($extension == "pdf"  || 
@@ -76,7 +79,7 @@
                 $resultcount ++;
 
                 # print links to objects using the file handler script to build hrefs
-                echo "<a target='_blank' href='../php/filehandler.php?name=$path&ext=$extension&shortname=$displayename'>$displayename</a>";
+                echo "<a target='_blank' href='../php/filehandler.php?name=$path&ext=$extension&shortname=$displayname&size=$filesize'>$displayname</a>";
             }   
         }
 
